@@ -1,9 +1,9 @@
 package com.user.service.impl;
 
+import com.user.entities.User;
 import com.user.exception.ResourceNotFoundException;
 import com.user.payload.UserDto;
 import com.user.repository.UserRepository;
-import com.user.entities.User;
 import com.user.service.UserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
@@ -36,7 +36,7 @@ public class UserServiceImpl implements UserService {
         );
         user.setName(userDto.getName());
         user.setEmail(userDto.getEmail());
-        user.setMobile(userDto.getMobile());
+//        user.setMobile(userDto.getMobile());
         user.setUsername(userDto.getUsername());
         user.setPassword(userDto.getPassword());
         User updatedUser = userRepository.save(user);
@@ -64,13 +64,13 @@ public class UserServiceImpl implements UserService {
                 .collect(Collectors.toList());
     }
 
-    UserDto mapToDto(User users){
-        UserDto userDto = modelMapper.map(users,UserDto.class);
+    UserDto mapToDto(User users) {
+        UserDto userDto = modelMapper.map(users, UserDto.class);
         return userDto;
     }
 
-    User mapToEntity(UserDto userDto){
-        User users = modelMapper.map(userDto,User.class);
+    User mapToEntity(UserDto userDto) {
+        User users = modelMapper.map(userDto, User.class);
         return users;
     }
 }

@@ -1,4 +1,5 @@
 package com.user.controller;
+
 import com.user.entities.Role;
 import com.user.entities.User;
 import com.user.payload.JWTAuthResponse;
@@ -41,6 +42,7 @@ public class AuthController {
     @Autowired
     private JwtTokenProvider tokenProvider;
 
+    // http://localhost:8080/api/auth/signin
     @PostMapping("/signin")
     public ResponseEntity<JWTAuthResponse> authenticateUser(@RequestBody LoginDto loginDto){
         Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
@@ -76,9 +78,9 @@ public class AuthController {
 
         Role roles = roleRepository.findByName("ROLE_ADMIN").get();
         user.setRoles(Collections.singleton(roles));
+
         userRepository.save(user);
 
         return new ResponseEntity<>("User registered successfully", HttpStatus.OK);
-
     }
 }

@@ -1,12 +1,12 @@
 package com.user.entities;
 
-import jakarta.persistence.*;
-import jakarta.persistence.Table;
 import lombok.Data;
+
+import javax.persistence.*;
 
 @Data
 @Entity
-@Table(name = "ROLES")
+@Table(name = "roles")
 public class Role {
 
     @Id
